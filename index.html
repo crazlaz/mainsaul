@@ -189,17 +189,52 @@
     .r-name { font-size: .9rem; font-weight: 700; color: var(--fg); }
     .r-svc { font-size: .75rem; color: var(--fg2); }
 
-    /* ── CONTACT CTA ── */
-    .contact-cta { background: var(--green-dark); padding: 3.5rem 0; text-align: center; }
-    body.dark .contact-cta { background: #0A180A; }
-    .contact-cta h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; color: #fff; letter-spacing: -.03em; margin-bottom: 1.5rem; }
-    .contact-details { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin-top: 2rem; }
-    .contact-detail-item { color: rgba(255,255,255,.85); font-size: .9rem; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
-    .contact-detail-item strong { color: #fff; font-size: 1rem; }
-    .contact-detail-item a { color: rgba(255,255,255,.85); }
-    .contact-detail-item a:hover { color: var(--accent); }
-    .cta-btn-large { display: inline-block; padding: 1rem 2.75rem; background: #fff; color: var(--green-dark); border-radius: 6px; font-weight: 900; font-size: 1.1rem; transition: all .2s; }
-    .cta-btn-large:hover { background: var(--accent); color: #fff; }
+    /* ── CONTACT FORM ── */
+    .contact-section { background: var(--surf2); padding: 6rem 0; transition: background .3s; }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+
+    /* left info panel */
+    .contact-info-panel { }
+    .contact-info-panel .ci-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: .5rem; }
+    body.dark .contact-info-panel .ci-label { color: var(--accent); }
+    .contact-info-panel h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; letter-spacing: -.03em; color: var(--fg); line-height: 1.15; margin-bottom: 1rem; }
+    .contact-info-panel > p { font-size: .97rem; color: var(--fg2); line-height: 1.75; margin-bottom: 2rem; }
+    .ci-items { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 2rem; }
+    .ci-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .ci-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    body.dark .ci-icon { background: var(--green-dark); }
+    .ci-item-text strong { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--fg2); margin-bottom: .1rem; }
+    .ci-item-text a, .ci-item-text span { font-size: .95rem; font-weight: 600; color: var(--fg); }
+    .ci-item-text a:hover { color: var(--green); }
+    body.dark .ci-item-text a:hover { color: var(--accent); }
+    .ci-badge { display: inline-flex; align-items: center; gap: .5rem; background: var(--green); color: #fff; padding: .6rem 1.25rem; border-radius: 99px; font-size: .8rem; font-weight: 700; letter-spacing: .04em; }
+
+    /* right form card */
+    .contact-form-card { background: var(--card); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 30px rgba(0,0,0,.07); border: 1px solid var(--ln); transition: background .3s; }
+    body.dark .contact-form-card { box-shadow: 0 4px 30px rgba(0,0,0,.3); }
+    .contact-form-card h3 { font-size: 1.3rem; font-weight: 800; color: var(--fg); margin-bottom: .35rem; }
+    .contact-form-card .form-sub { font-size: .85rem; color: var(--fg2); margin-bottom: 1.75rem; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cf-field { margin-bottom: 1rem; }
+    .cf-field label { display: block; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--fg2); margin-bottom: .4rem; }
+    .cf-field input, .cf-field select, .cf-field textarea { width: 100%; padding: .85rem 1rem; border: 1.5px solid var(--ln); border-radius: 8px; font-size: .95rem; color: var(--fg); background: var(--surf); outline: none; font-family: inherit; transition: border-color .2s, box-shadow .2s, background .3s; }
+    .cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,.1); }
+    .cf-field input::placeholder, .cf-field textarea::placeholder { color: #bbb; }
+    .cf-field textarea { resize: vertical; min-height: 110px; }
+    .cf-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .cf-submit { width: 100%; padding: 1rem; background: var(--green); color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 800; cursor: pointer; letter-spacing: .03em; transition: background .2s, transform .1s; margin-top: .25rem; }
+    .cf-submit:hover { background: var(--green-dark); }
+    .cf-submit:active { transform: scale(.99); }
+    .cf-note { font-size: .75rem; color: var(--fg2); text-align: center; margin-top: .75rem; }
+    #cf-success { display: none; text-align: center; padding: 3rem 1rem; }
+    #cf-success .cf-check { font-size: 3rem; margin-bottom: .75rem; }
+    #cf-success h3 { font-size: 1.3rem; font-weight: 800; color: var(--fg); margin-bottom: .4rem; }
+    #cf-success p { color: var(--fg2); font-size: .95rem; }
+
+    @media (max-width: 860px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cf-row { grid-template-columns: 1fr; }
+    }
 
     /* ── FOOTER ── */
     footer { background: #0A120A; padding: 2rem 1.5rem; text-align: center; }
@@ -473,16 +508,98 @@
 </section>
 
 <!-- ── CONTACT ── -->
-<section class="contact-cta" id="contact">
+<section class="contact-section" id="contact">
   <div class="container">
-    <h2 data-i18n="con_title">Contact Us</h2>
-    <a href="tel:+19804284284" class="cta-btn-large" data-i18n="con_cta">📞 Call For a Free Estimate</a>
-    <div class="contact-details">
-      <div class="contact-detail-item"><strong data-i18n="con_phone_lbl">Phone</strong><a href="tel:+19804284284">+1 (980) 428-4284</a></div>
-      <div class="contact-detail-item"><strong data-i18n="con_email_lbl">Email</strong><a href="mailto:caballerolawnservices@outlook.com">caballerolawnservices@outlook.com</a></div>
-      <div class="contact-detail-item"><strong data-i18n="con_addr_lbl">Address</strong><span>404 S Branch St, Monroe, NC 28112</span></div>
-      <div class="contact-detail-item"><strong data-i18n="con_hours_lbl">Hours</strong><span data-i18n="con_hours_val">Mon–Sat: 7am – 6pm</span></div>
-      <div class="contact-detail-item"><strong data-i18n="con_emergency">24/7 Emergencies</strong><a href="tel:+19804284284">+1 (980) 428-4284</a></div>
+    <div class="contact-wrap">
+
+      <!-- LEFT: info -->
+      <div class="contact-info-panel">
+        <div class="ci-label" data-i18n="con_label">Get In Touch</div>
+        <h2 data-i18n="con_title">Let's Talk About Your Project</h2>
+        <p data-i18n="con_sub">Fill out the form and we'll get back to you within 24 hours with a free written estimate. No pressure, no obligation.</p>
+        <div class="ci-items">
+          <div class="ci-item">
+            <div class="ci-icon">📞</div>
+            <div class="ci-item-text">
+              <strong data-i18n="con_phone_lbl">Phone</strong>
+              <a href="tel:+19804284284">+1 (980) 428-4284</a>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">✉️</div>
+            <div class="ci-item-text">
+              <strong data-i18n="con_email_lbl">Email</strong>
+              <a href="mailto:caballerolawnservices@outlook.com">caballerolawnservices@outlook.com</a>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-item-text">
+              <strong data-i18n="con_addr_lbl">Address</strong>
+              <span>404 S Branch St, Monroe, NC 28112</span>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🕐</div>
+            <div class="ci-item-text">
+              <strong data-i18n="con_hours_lbl">Hours</strong>
+              <span data-i18n="con_hours_val">Mon–Sat: 7am – 6pm</span>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">🚨</div>
+            <div class="ci-item-text">
+              <strong data-i18n="con_emergency">24/7 Emergencies</strong>
+              <a href="tel:+19804284284">+1 (980) 428-4284</a>
+            </div>
+          </div>
+        </div>
+        <span class="ci-badge">★★★★★ &nbsp;<span data-i18n="con_badge">5-Star Rated in Charlotte, NC</span></span>
+      </div>
+
+      <!-- RIGHT: form -->
+      <div class="contact-form-card">
+        <h3 data-i18n="con_form_title">Request a Free Quote</h3>
+        <p class="form-sub" data-i18n="con_form_sub">We respond within 24 hours — usually faster.</p>
+        <form id="contact-form" onsubmit="handleContactSubmit(event)" novalidate>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label data-i18n="f_fname">First Name *</label>
+              <input type="text" required data-i18n-ph="f_fname_ph">
+            </div>
+            <div class="cf-field">
+              <label data-i18n="f_lname">Last Name</label>
+              <input type="text" data-i18n-ph="f_lname_ph">
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label data-i18n="f_phone">Phone *</label>
+              <input type="tel" required data-i18n-ph="f_phone_ph">
+            </div>
+            <div class="cf-field">
+              <label data-i18n="f_email">Email</label>
+              <input type="email" data-i18n-ph="f_email_ph">
+            </div>
+          </div>
+          <div class="cf-field">
+            <label data-i18n="f_service">Service Needed</label>
+            <select id="svc-select-contact"></select>
+          </div>
+          <div class="cf-field">
+            <label data-i18n="f_msg">Tell Us About Your Project</label>
+            <textarea data-i18n-ph="f_msg_ph"></textarea>
+          </div>
+          <button type="submit" class="cf-submit" data-i18n="f_submit_contact">Send My Free Quote Request →</button>
+          <p class="cf-note" data-i18n="cf_note">🔒 Your information is private and will never be shared.</p>
+        </form>
+        <div id="cf-success">
+          <div class="cf-check">✅</div>
+          <h3 data-i18n="suc_title">You're all set!</h3>
+          <p data-i18n="suc_body">Thanks for reaching out to Caballero Lawn Services. We'll contact you within 24 hours to schedule your free estimate.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -527,9 +644,17 @@ const T = {
     rs_maintenance:'Lawn Maintenance', rs_mulch:'Mulch Installation', rs_patio:'Patio & Pavers',
     rs_snow:'Snow Removal', rs_tree:'Tree Removal', rs_seed:'Seeding & Aerating',
     rs_shrub:'Shrub Planting', rs_landscape:'Full Landscape',
-    con_title:'Contact Us', con_cta:'📞 Call For a Free Estimate',
+    con_label:'Get In Touch', con_title:"Let's Talk About Your Project",
+    con_sub:"Fill out the form and we'll get back to you within 24 hours with a free written estimate. No pressure, no obligation.",
     con_phone_lbl:'Phone', con_email_lbl:'Email', con_addr_lbl:'Address',
     con_hours_lbl:'Hours', con_hours_val:'Mon–Sat: 7am – 6pm', con_emergency:'24/7 Emergencies',
+    con_badge:'5-Star Rated in Charlotte, NC',
+    con_form_title:'Request a Free Quote', con_form_sub:'We respond within 24 hours — usually faster.',
+    f_fname:'First Name *', f_lname:'Last Name', f_fname_ph:'John', f_lname_ph:'Smith',
+    f_msg:'Tell Us About Your Project', f_msg_ph:'Describe your project, size, timeline, or any questions…',
+    f_submit_contact:'Send My Free Quote Request →',
+    cf_note:'🔒 Your information is private and will never be shared.',
+    suc_title:"You're all set!", suc_body:"Thanks for reaching out to Caballero Lawn Services. We'll contact you within 24 hours to schedule your free estimate.",
     ft_copy:'© 2026 Caballero Lawn Service – All Rights Reserved. Professional landscaping solutions designed to enhance the beauty and value of your outdoor spaces.',
   },
   es: {
@@ -564,9 +689,17 @@ const T = {
     rs_maintenance:'Mantenimiento de Césped', rs_mulch:'Instalación de Mantillo', rs_patio:'Patios y Adoquines',
     rs_snow:'Remoción de Nieve', rs_tree:'Remoción de Árboles', rs_seed:'Siembra y Aireación',
     rs_shrub:'Plantación de Arbustos', rs_landscape:'Paisajismo Completo',
-    con_title:'Contáctenos', con_cta:'📞 Llame para Estimado Gratis',
+    con_label:'Contáctenos', con_title:'Hablemos de Tu Proyecto',
+    con_sub:'Llena el formulario y te responderemos en 24 horas con un estimado gratuito por escrito. Sin presión, sin compromiso.',
     con_phone_lbl:'Teléfono', con_email_lbl:'Correo', con_addr_lbl:'Dirección',
     con_hours_lbl:'Horario', con_hours_val:'Lun–Sáb: 7am – 6pm', con_emergency:'Emergencias 24/7',
+    con_badge:'Calificación de 5 Estrellas en Charlotte, NC',
+    con_form_title:'Solicitar Cotización Gratuita', con_form_sub:'Respondemos en 24 horas — generalmente antes.',
+    f_fname:'Nombre *', f_lname:'Apellido', f_fname_ph:'Juan', f_lname_ph:'García',
+    f_msg:'Cuéntanos sobre Tu Proyecto', f_msg_ph:'Describe tu proyecto, tamaño, cronograma o cualquier pregunta…',
+    f_submit_contact:'Enviar Mi Solicitud de Cotización →',
+    cf_note:'🔒 Tu información es privada y nunca será compartida.',
+    suc_title:'¡Todo listo!', suc_body:'Gracias por contactar a Caballero Lawn Services. Nos comunicaremos contigo en 24 horas para programar tu estimado gratuito.',
     ft_copy:'© 2026 Caballero Lawn Service – Todos los Derechos Reservados. Soluciones profesionales de paisajismo diseñadas para realzar la belleza y el valor de sus espacios exteriores.',
   }
 };
@@ -590,8 +723,9 @@ function applyLang() {
     const v = T[lang][key];
     if (v !== undefined) el.childNodes[0].textContent = v + ' ';
   });
-  const sel = document.getElementById('svc-select');
-  if (sel) {
+  ['svc-select','svc-select-contact'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (!sel) return;
     sel.innerHTML = '';
     T[lang].svc_opts.forEach((opt, i) => {
       const o = document.createElement('option');
@@ -599,7 +733,7 @@ function applyLang() {
       o.textContent = opt;
       sel.appendChild(o);
     });
-  }
+  });
   document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
   document.documentElement.lang = lang;
 }
@@ -645,11 +779,16 @@ function slide(id, dir) {
   el.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
 }
 
-// Form
+// Forms
 function handleSubmit(e) {
   e.preventDefault();
   document.getElementById('hero-form').style.display = 'none';
   document.getElementById('hero-success').style.display = 'block';
+}
+function handleContactSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('cf-success').style.display = 'block';
 }
 
 applyLang();
