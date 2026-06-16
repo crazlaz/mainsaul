@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Landscaping & Lawn Care Services, Pavers in Charlotte, NC</title>
+  <meta name="description" content="Professional landscaping, lawn maintenance, mulch, patios and pavers in Charlotte, NC. Free estimates. Call (980) 428-4284.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #2E7D32;
+      --green-dark: #1B5E20;
+      --accent:     #4CAF50;
+      --gold:       #F9A825;
+      --white:      #FFFFFF;
+      --surf:       #FFFFFF;
+      --surf2:      #F4F7F4;
+      --card:       #FFFFFF;
+      --fg:         #1A1A1A;
+      --fg2:        #555;
+      --ln:         #D4E6C3;
+    }
+
+    body.dark {
+      --surf:  #0D150D;
+      --surf2: #131C13;
+      --card:  #1A251A;
+      --fg:    #E8F5E8;
+      --fg2:   #7FA87F;
+      --ln:    rgba(255,255,255,.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: var(--fg); background: var(--surf); line-height: 1.6; transition: background .3s, color .3s; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .stars { color: var(--gold); letter-spacing: .1em; }
+
+    /* ── TOP BAR ── */
+    .top-bar { background: var(--green-dark); padding: .4rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .25rem; }
+    .top-bar-phone { color: #fff; font-size: .82rem; font-weight: 700; }
+    .top-bar-phone a { color: #fff; }
+    .top-bar-brand { color: rgba(255,255,255,.7); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; z-index: 200; background: var(--surf); border-bottom: 2px solid var(--green); box-shadow: 0 2px 12px rgba(0,0,0,.12); transition: background .3s; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .nav-logo { font-size: 1.1rem; font-weight: 900; color: var(--green); letter-spacing: -.02em; line-height: 1.1; }
+    body.dark .nav-logo { color: var(--accent); }
+    .nav-logo small { display: block; font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--fg2); }
+    .nav-menu { display: flex; align-items: center; gap: .25rem; list-style: none; }
+    .nav-menu > li { position: relative; }
+    .nav-menu > li > a, .nav-menu > li > button { padding: .5rem .85rem; font-size: .85rem; font-weight: 600; color: var(--fg); background: none; border: none; cursor: pointer; border-radius: 4px; display: flex; align-items: center; gap: .3rem; font-family: inherit; transition: background .15s, color .15s; white-space: nowrap; }
+    .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--surf2); color: var(--green); }
+    body.dark .nav-menu > li > a:hover, body.dark .nav-menu > li > button:hover { color: var(--accent); }
+    .nav-menu .chevron { font-size: .6rem; opacity: .6; }
+    .nav-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; background: var(--surf); border: 1px solid var(--ln); border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.12); min-width: 200px; z-index: 300; padding: .4rem 0; }
+    .nav-menu > li:hover .nav-dropdown, .nav-menu > li:focus-within .nav-dropdown { display: block; }
+    .nav-dropdown a { display: block; padding: .55rem 1.1rem; font-size: .84rem; font-weight: 500; color: var(--fg); transition: background .15s; }
+    .nav-dropdown a:hover { background: var(--surf2); color: var(--green); }
+    .nav-cta-btn { background: var(--green) !important; color: #fff !important; border-radius: 5px !important; }
+    .nav-cta-btn:hover { background: var(--green-dark) !important; color: #fff !important; }
+    .nav-controls { display: flex; align-items: center; gap: .4rem; }
+    .ctrl-btn { padding: .3rem .65rem; border: 1.5px solid var(--ln); border-radius: 4px; font-size: .72rem; font-weight: 700; cursor: pointer; background: transparent; color: var(--fg2); transition: all .2s; }
+    .ctrl-btn:hover { background: var(--surf2); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--fg); }
+    .mobile-nav { display: none; flex-direction: column; background: var(--surf); border-top: 1px solid var(--ln); padding: 1rem 1.5rem; gap: .75rem; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a, .mobile-nav button { font-size: .9rem; font-weight: 600; color: var(--fg); background: none; border: none; cursor: pointer; text-align: left; padding: .35rem 0; font-family: inherit; }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(13,40,13,.82) 0%, rgba(13,40,13,.5) 60%, rgba(0,0,0,.2) 100%); }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 420px; gap: 3rem; align-items: center; padding: 6rem 0 4rem; width: 100%; }
+    .hero-text { color: #fff; }
+    .hero-text .stars { font-size: 1.3rem; margin-bottom: 1rem; display: block; }
+    .hero-text h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -.04em; margin-bottom: 1.5rem; }
+    .hero-text h1 span { display: block; }
+    .hero-text h1 .green-word { color: var(--accent); }
+    .hero-text p { font-size: 1.05rem; color: rgba(255,255,255,.82); max-width: 460px; line-height: 1.7; }
+    .hero-form { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 24px 60px rgba(0,0,0,.3); }
+    body.dark .hero-form { background: var(--card); }
+    .hero-form h2 { font-size: 1.2rem; font-weight: 800; color: var(--fg); margin-bottom: 1.25rem; }
+    .fld { margin-bottom: .85rem; }
+    .fld label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--fg2); margin-bottom: .3rem; }
+    .fld input, .fld select { width: 100%; padding: .8rem 1rem; border: 1.5px solid #D0D9D0; border-radius: 5px; font-size: .95rem; color: var(--fg); background: var(--surf); outline: none; font-family: inherit; transition: border-color .2s; }
+    .fld input:focus, .fld select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,125,50,.1); }
+    .fld input::placeholder { color: #aaa; }
+    .hero-form .submit-btn { width: 100%; padding: .95rem; background: var(--green); color: #fff; border: none; border-radius: 5px; font-size: 1rem; font-weight: 800; cursor: pointer; letter-spacing: .04em; text-transform: uppercase; margin-top: .25rem; transition: background .2s; }
+    .hero-form .submit-btn:hover { background: var(--green-dark); }
+    #hero-success { display: none; text-align: center; padding: 2rem 0; }
+    #hero-success .s-check { font-size: 2.5rem; }
+
+    /* ── WELCOME ── */
+    .welcome { background: var(--surf); padding: 5rem 0; transition: background .3s; }
+    .welcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .welcome-text { }
+    .welcome-text .stars { font-size: 1.2rem; display: block; margin-bottom: 1rem; }
+    .welcome-text .pre-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--green); margin-bottom: .3rem; }
+    body.dark .welcome-text .pre-title { color: var(--accent); }
+    .welcome-text h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -.03em; color: var(--fg); line-height: 1.1; margin-bottom: 1.25rem; }
+    .welcome-text p { font-size: .97rem; color: var(--fg2); line-height: 1.8; margin-bottom: 1.5rem; }
+    .welcome-text .stars-bottom { font-size: 1rem; }
+    .welcome-img { border-radius: 10px; overflow: hidden; height: 420px; position: relative; }
+    .welcome-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── SECTION DIVIDER / LABEL ── */
+    .section-dark { background: var(--green-dark); padding: 2.5rem 0; text-align: center; }
+    body.dark .section-dark { background: #0A180A; }
+    .section-dark h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: #fff; letter-spacing: -.03em; line-height: 1.1; }
+    .section-dark h2 span { color: var(--accent); }
+    .section-dark p { color: rgba(255,255,255,.7); font-size: .97rem; margin-top: .75rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    /* ── IMAGE SLIDER ── */
+    .slider-section { padding: 0; overflow: hidden; }
+    .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .5rem; padding: .5rem; scrollbar-width: none; }
+    .slider-track::-webkit-scrollbar { display: none; }
+    .slider-slide { flex: 0 0 calc(33.333% - .35rem); scroll-snap-align: start; border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; position: relative; }
+    .slider-slide img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .slider-slide:hover img { transform: scale(1.04); }
+    .slider-slide.wide { flex: 0 0 calc(50% - .25rem); }
+    .slider-controls { display: flex; justify-content: center; gap: .5rem; padding: .75rem 0 1rem; }
+    .s-btn { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--green); background: transparent; color: var(--green); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .s-btn:hover { background: var(--green); color: #fff; }
+
+    /* ── OUR PROJECTS ── */
+    .projects { padding: 5rem 0; background: var(--surf2); transition: background .3s; }
+    .section-header { text-align: center; margin-bottom: 2rem; }
+    .section-header .label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: .4rem; }
+    body.dark .section-header .label { color: var(--accent); }
+    .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -.03em; color: var(--fg); }
+    .section-header p { color: var(--fg2); font-size: .97rem; max-width: 500px; margin: .5rem auto 0; }
+
+    /* ── WHY CHOOSE ── */
+    .why { padding: 5rem 0; background: var(--surf); transition: background .3s; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .why-text h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900; letter-spacing: -.03em; color: var(--fg); margin-bottom: 1rem; }
+    .why-text p { font-size: .97rem; color: var(--fg2); line-height: 1.8; margin-bottom: 1.5rem; }
+    .why-sub { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--green); letter-spacing: -.02em; }
+    body.dark .why-sub { color: var(--accent); }
+    .why-img { border-radius: 10px; overflow: hidden; height: 380px; position: relative; }
+    .why-img img { width: 100%; height: 100%; object-fit: cover; }
+    .why-ctas { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+    .btn-solid { padding: .8rem 1.75rem; background: var(--green); color: #fff; border-radius: 5px; font-weight: 700; font-size: .9rem; border: 2px solid var(--green); transition: all .2s; display: inline-block; }
+    .btn-solid:hover { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-ghost { padding: .8rem 1.75rem; background: transparent; color: var(--green); border: 2px solid var(--green); border-radius: 5px; font-weight: 700; font-size: .9rem; transition: all .2s; display: inline-block; }
+    .btn-ghost:hover { background: var(--green); color: #fff; }
+
+    /* ── FAQ ── */
+    .faq { padding: 5rem 0; background: var(--surf2); transition: background .3s; }
+    .faq-list { max-width: 740px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--ln); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--fg); font-family: inherit; }
+    .faq-q:hover { color: var(--green); }
+    body.dark .faq-q:hover { color: var(--accent); }
+    .faq-icon { font-size: 1.3rem; color: var(--green); flex-shrink: 0; transition: transform .3s; line-height: 1; font-weight: 300; }
+    body.dark .faq-icon { color: var(--accent); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-a p { padding-bottom: 1.25rem; font-size: .95rem; color: var(--fg2); line-height: 1.75; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-a { max-height: 250px; }
+
+    /* ── VISION SECTION ── */
+    .vision { position: relative; min-height: 420px; display: flex; align-items: center; overflow: hidden; }
+    .vision-bg { position: absolute; inset: 0; }
+    .vision-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .vision-bg::after { content: ''; position: absolute; inset: 0; background: rgba(10,30,10,.75); }
+    .vision-content { position: relative; z-index: 1; text-align: center; padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto; }
+    .vision-content h2 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; color: #fff; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 1rem; }
+    .vision-content h2 span { color: var(--accent); }
+    .vision-content p { font-size: 1.05rem; color: rgba(255,255,255,.8); line-height: 1.75; max-width: 600px; margin: 0 auto 2rem; }
+    .vision-content a { display: inline-block; padding: .9rem 2.25rem; background: var(--accent); color: #fff; border-radius: 5px; font-weight: 800; font-size: 1rem; transition: background .2s; }
+    .vision-content a:hover { background: var(--green); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 5rem 0; background: var(--surf); transition: background .3s; }
+    .reviews-track { display: flex; overflow-x: auto; gap: 1.25rem; padding: .5rem .25rem 1rem; scrollbar-width: none; scroll-snap-type: x mandatory; }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .review-card { flex: 0 0 320px; scroll-snap-align: start; background: var(--card); border: 1px solid var(--ln); border-radius: 10px; padding: 1.5rem; transition: background .3s, box-shadow .2s; }
+    .review-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.09); }
+    .r-stars { color: var(--gold); font-size: .95rem; margin-bottom: .6rem; }
+    .r-text { font-size: .92rem; color: var(--fg); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+    .r-author { display: flex; align-items: center; gap: .75rem; }
+    .r-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 800; flex-shrink: 0; }
+    .r-name { font-size: .9rem; font-weight: 700; color: var(--fg); }
+    .r-svc { font-size: .75rem; color: var(--fg2); }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta { background: var(--green-dark); padding: 3.5rem 0; text-align: center; }
+    body.dark .contact-cta { background: #0A180A; }
+    .contact-cta h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; color: #fff; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+    .contact-details { display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin-top: 2rem; }
+    .contact-detail-item { color: rgba(255,255,255,.85); font-size: .9rem; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+    .contact-detail-item strong { color: #fff; font-size: 1rem; }
+    .contact-detail-item a { color: rgba(255,255,255,.85); }
+    .contact-detail-item a:hover { color: var(--accent); }
+    .cta-btn-large { display: inline-block; padding: 1rem 2.75rem; background: #fff; color: var(--green-dark); border-radius: 6px; font-weight: 900; font-size: 1.1rem; transition: all .2s; }
+    .cta-btn-large:hover { background: var(--accent); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer { background: #0A120A; padding: 2rem 1.5rem; text-align: center; }
+    body.dark footer { background: #060D06; }
+    .footer-logo { font-size: 1rem; font-weight: 900; color: var(--accent); margin-bottom: .5rem; }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.25); line-height: 1.7; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .welcome-grid, .why-grid { grid-template-columns: 1fr; }
+      .welcome-img, .why-img { height: 260px; }
+    }
+    @media (max-width: 700px) {
+      .nav-menu { display: none; }
+      .nav-hamburger { display: block; }
+      .slider-slide { flex: 0 0 calc(80% - .35rem); }
+      .review-card { flex: 0 0 280px; }
+      .contact-details { flex-direction: column; gap: 1rem; }
+      .top-bar { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<div class="top-bar">
+  <span class="top-bar-phone">📞 <a href="tel:+19804284284">(980) 428-4284</a></span>
+  <span class="top-bar-brand" data-i18n="nav_brand">CABALLERO LAWN SERVICES CHARLOTTE</span>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      Caballero Lawn Services
+      <small>Charlotte, NC</small>
+    </a>
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#home" data-i18n="nav_home">Home</a></li>
+      <li>
+        <button data-i18n-btn="nav_services">Services <span class="chevron">▼</span></button>
+        <ul class="nav-dropdown">
+          <li><a href="#contact" data-i18n="svc_1">Lawn Care</a></li>
+          <li><a href="#contact" data-i18n="svc_2">Mulch Service</a></li>
+          <li><a href="#contact" data-i18n="svc_3">Fertilization</a></li>
+          <li><a href="#contact" data-i18n="svc_4">Spring / Fall Clean Up</a></li>
+          <li><a href="#contact" data-i18n="svc_5">Tree Removal</a></li>
+          <li><a href="#contact" data-i18n="svc_6">Snow Removal</a></li>
+          <li><a href="#contact" data-i18n="svc_7">Seeding / Aerating</a></li>
+          <li><a href="#contact" data-i18n="svc_8">Pavers &amp; Patios</a></li>
+          <li><a href="#contact" data-i18n="svc_9">Other Services</a></li>
+        </ul>
+      </li>
+      <li>
+        <button data-i18n-btn="nav_area">Area Served <span class="chevron">▼</span></button>
+        <ul class="nav-dropdown">
+          <li><a href="#contact">Charlotte, NC</a></li>
+          <li><a href="#contact">Monroe, NC</a></li>
+          <li><a href="#contact">Matthews, NC</a></li>
+          <li><a href="#contact">Waxhaw, NC</a></li>
+          <li><a href="#contact">Indian Trail, NC</a></li>
+          <li><a href="#contact">Weddington, NC</a></li>
+        </ul>
+      </li>
+      <li><a href="#contact" class="nav-cta-btn" data-i18n="nav_cta">Free Quote</a></li>
+    </ul>
+    <div class="nav-controls">
+      <button class="ctrl-btn" id="lang-btn">ES</button>
+      <button class="ctrl-btn" id="mode-btn">🌙</button>
+      <button class="nav-hamburger" id="nav-hamburger">&#9776;</button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" data-i18n="nav_home">Home</a>
+    <a href="#contact" data-i18n="nav_cta">Free Quote</a>
+    <a href="#services" data-i18n="nav_services">Services</a>
+    <a href="#why" data-i18n="nav_why">About</a>
+    <a href="#contact" data-i18n="nav_area">Area Served</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="images/proj-2.jpg" alt="Caballero Lawn Services">
+  </div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="stars">★ ★ ★ ★ ★</span>
+        <h1>
+          <span data-i18n="hero_line1">Charlotte's Trusted</span>
+          <span class="green-word" data-i18n="hero_line2">Outdoor</span>
+          <span data-i18n="hero_line3">Experts.</span>
+        </h1>
+        <p data-i18n="hero_sub">Mulch, Maintenance, Patios and Full Landscape projects — with fast quotes, clean work and reliable results.</p>
+      </div>
+      <div class="hero-form">
+        <h2 data-i18n="form_title">Get a Free Estimate</h2>
+        <form id="hero-form" onsubmit="handleSubmit(event)" novalidate>
+          <div class="fld"><label data-i18n="f_name">Full Name</label><input type="text" data-i18n-ph="f_name_ph"></div>
+          <div class="fld"><label data-i18n="f_phone">Phone *</label><input type="tel" required data-i18n-ph="f_phone_ph"></div>
+          <div class="fld"><label data-i18n="f_email">Gmail *</label><input type="email" data-i18n-ph="f_email_ph"></div>
+          <div class="fld"><label data-i18n="f_service">Select a Service</label><select id="svc-select"></select></div>
+          <button type="submit" class="submit-btn" data-i18n="f_submit">Enviar</button>
+        </form>
+        <div id="hero-success"><div class="s-check">✅</div><strong data-i18n="suc_title">We'll be in touch soon!</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WELCOME ── -->
+<section class="welcome" id="about">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-text">
+        <span class="stars">★ ★ ★ ★ ★</span>
+        <p class="pre-title" data-i18n="wel_pre">Welcome to</p>
+        <h2 data-i18n="wel_title">Caballero Lawn Services</h2>
+        <p data-i18n="wel_body">Since 2016, Caballero Lawn Services has provided dependable landscaping services in Charlotte, NC and surrounding communities, from seasonal maintenance and mulch installation to patios and full landscape projects, delivering consistent results for residential and commercial properties.</p>
+        <span class="stars stars-bottom">★ ★ ★ ★ ★</span>
+      </div>
+      <div class="welcome-img">
+        <img src="images/proj-3.jpg" alt="Caballero Lawn Services work">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SLIDER 1 – BUILD ON TRUST ── -->
+<div class="section-dark">
+  <h2><span data-i18n="sl1_line1">Build on Trust</span><br>&amp; <span class="green-word" data-i18n="sl1_line2">Quality</span></h2>
+</div>
+<div class="slider-section" id="services">
+  <div class="slider-track" id="slider1">
+    <div class="slider-slide"><img src="images/proj-1.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-4.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-5.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-6.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-7.jpg" alt="Project"></div>
+  </div>
+  <div class="slider-controls">
+    <button class="s-btn" onclick="slide('slider1',-1)">&#8592;</button>
+    <button class="s-btn" onclick="slide('slider1',1)">&#8594;</button>
+  </div>
+</div>
+
+<!-- ── OUR PROJECTS ── -->
+<section class="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="proj_label">Our Work</div>
+      <h2 data-i18n="proj_title">Our Projects</h2>
+      <p data-i18n="proj_sub">From retaining walls and custom patios to full landscape transformations.</p>
+    </div>
+  </div>
+  <div class="slider-track" id="slider2" style="padding:0 1.5rem 0;">
+    <div class="slider-slide wide"><img src="images/proj-8.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-9.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-10.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-11.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-12.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-13.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-14.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-15.jpg" alt="Project"></div>
+    <div class="slider-slide wide"><img src="images/proj-16.jpg" alt="Project"></div>
+  </div>
+  <div class="slider-controls">
+    <button class="s-btn" onclick="slide('slider2',-1)">&#8592;</button>
+    <button class="s-btn" onclick="slide('slider2',1)">&#8594;</button>
+  </div>
+</section>
+
+<!-- ── WHY CHOOSE ── -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text">
+        <h2 data-i18n="why_title">Why Choose Caballero Lawn Service?</h2>
+        <p data-i18n="why_body">At Caballero Lawn Services, we are committed to delivering high-quality landscaping and outdoor solutions with professionalism, reliability, and attention to detail. Since 2016, we have helped homeowners and businesses transform their outdoor spaces with services designed to improve beauty, functionality, and value.</p>
+        <div class="why-sub" data-i18n="why_sub">Full Renovation &amp; Lawn Care</div>
+        <div class="why-ctas">
+          <a href="#contact" class="btn-solid" data-i18n="why_cta1">Free Estimate</a>
+          <a href="#contact" class="btn-ghost" data-i18n="why_cta2">Get Quote Here</a>
+        </div>
+      </div>
+      <div class="why-img">
+        <img src="images/proj-17.jpg" alt="Caballero Lawn Services">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SLIDER 3 – FULL RENOVATION ── -->
+<div class="section-dark">
+  <h2 data-i18n="sl3_title">Full Renovation &amp; <span class="green-word">Lawn Care</span></h2>
+  <p data-i18n="sl3_sub">Professional results for residential and commercial properties across the Charlotte area.</p>
+</div>
+<div class="slider-section">
+  <div class="slider-track" id="slider3">
+    <div class="slider-slide"><img src="images/proj-1.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-3.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-5.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-9.jpg" alt="Project"></div>
+    <div class="slider-slide"><img src="images/proj-11.jpg" alt="Project"></div>
+  </div>
+  <div class="slider-controls">
+    <button class="s-btn" onclick="slide('slider3',-1)">&#8592;</button>
+    <button class="s-btn" onclick="slide('slider3',1)">&#8594;</button>
+  </div>
+</div>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="faq_label">FAQ</div>
+      <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="faq1_q">How often should mulch be replaced?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq1_a">Most mulch should be refreshed once per year to maintain appearance and effectiveness. In high-traffic or weather-exposed areas, topping off mulch more frequently can help retain moisture and prevent weed growth.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="faq2_q">Do I need a retaining wall for my yard?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq2_a">If your yard has slopes, drainage issues, or erosion concerns, a retaining wall can help stabilize the area and improve usability. It can also enhance the overall look of your landscape while preventing long-term damage.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span data-i18n="faq3_q">How quickly can I get a landscaping quote?</span><span class="faq-icon">+</span></button>
+        <div class="faq-a"><p data-i18n="faq3_a">In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 428-4284 to get started.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VISION ── -->
+<section class="vision">
+  <div class="vision-bg">
+    <img src="images/proj-4.jpg" alt="Background">
+  </div>
+  <div class="vision-content">
+    <h2><span data-i18n="vis_line1">Bring Your Vision to</span><br><span class="green-word" data-i18n="vis_line2">Life With Custom</span></h2>
+    <p data-i18n="vis_body">At Caballero Lawn Services, we specialize in patios, walkways, driveways, and retaining walls that combine beauty, durability, and craftsmanship.</p>
+    <a href="#contact" data-i18n="vis_cta">Get a Free Quote</a>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-i18n="rev_label">Reviews</div>
+      <h2 data-i18n="rev_title">Customer Testimonials</h2>
+      <div class="stars" style="margin-top:.5rem">★ ★ ★ ★ ★</div>
+    </div>
+  </div>
+  <div class="reviews-track" style="padding-left:1.5rem;padding-right:1.5rem;">
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"Caballero Lawn Services completely transformed my yard. The lawn looks greener, cleaner, and professionally maintained every week."</p><div class="r-author"><div class="r-avatar">MR</div><div><div class="r-name">Michael R.</div><div class="r-svc" data-i18n="rs_maintenance">Lawn Maintenance</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"They did an amazing job with our spring clean up and mulch installation. Very reliable, professional, and detail-oriented."</p><div class="r-author"><div class="r-avatar">JM</div><div><div class="r-name">Jessica M.</div><div class="r-svc" data-i18n="rs_mulch">Mulch Installation</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"The new paver patio and landscaping came out beautiful. Great communication and excellent quality work from start to finish."</p><div class="r-author"><div class="r-avatar">DT</div><div><div class="r-name">Daniel T.</div><div class="r-svc" data-i18n="rs_patio">Patio &amp; Pavers</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"Excellent lawn care service. My grass has never looked this healthy and green before."</p><div class="r-author"><div class="r-avatar">ER</div><div><div class="r-name">Elsie Roy</div><div class="r-svc" data-i18n="rs_maintenance">Lawn Maintenance</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"Caballero Lawn Services did a fantastic job removing snow from our driveway during the winter. Fast and dependable service."</p><div class="r-author"><div class="r-avatar">AL</div><div><div class="r-name">Amanda L.</div><div class="r-svc" data-i18n="rs_snow">Snow Removal</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"The tree removal service was quick, safe, and professional. They left everything clean afterward."</p><div class="r-author"><div class="r-avatar">SP</div><div><div class="r-name">Steven P.</div><div class="r-svc" data-i18n="rs_tree">Tree Removal</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"We hired them for seeding and aerating, and the results were incredible within just a few weeks."</p><div class="r-author"><div class="r-avatar">JC</div><div><div class="r-name">Jennifer C.</div><div class="r-svc" data-i18n="rs_seed">Seeding &amp; Aerating</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"Very professional team with great attention to detail. Our landscaping and shrub planting turned out beautiful."</p><div class="r-author"><div class="r-avatar">CG</div><div><div class="r-name">Carlos G.</div><div class="r-svc" data-i18n="rs_shrub">Shrub Planting</div></div></div></div>
+    <div class="review-card"><div class="r-stars">★ ★ ★ ★ ★</div><p class="r-text">"Excellent landscaping service! Very professional, always on time, and my yard looks amazing. Highly recommend Caballero Lawn Services to anyone in Charlotte."</p><div class="r-author"><div class="r-avatar">DJ</div><div><div class="r-name">David Jones</div><div class="r-svc" data-i18n="rs_landscape">Full Landscape</div></div></div></div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-cta" id="contact">
+  <div class="container">
+    <h2 data-i18n="con_title">Contact Us</h2>
+    <a href="tel:+19804284284" class="cta-btn-large" data-i18n="con_cta">📞 Call For a Free Estimate</a>
+    <div class="contact-details">
+      <div class="contact-detail-item"><strong data-i18n="con_phone_lbl">Phone</strong><a href="tel:+19804284284">+1 (980) 428-4284</a></div>
+      <div class="contact-detail-item"><strong data-i18n="con_email_lbl">Email</strong><a href="mailto:caballerolawnservices@outlook.com">caballerolawnservices@outlook.com</a></div>
+      <div class="contact-detail-item"><strong data-i18n="con_addr_lbl">Address</strong><span>404 S Branch St, Monroe, NC 28112</span></div>
+      <div class="contact-detail-item"><strong data-i18n="con_hours_lbl">Hours</strong><span data-i18n="con_hours_val">Mon–Sat: 7am – 6pm</span></div>
+      <div class="contact-detail-item"><strong data-i18n="con_emergency">24/7 Emergencies</strong><a href="tel:+19804284284">+1 (980) 428-4284</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Caballero Lawn Services</div>
+  <p class="footer-copy" data-i18n="ft_copy">© 2026 Caballero Lawn Service – All Rights Reserved. Professional landscaping solutions designed to enhance the beauty and value of your outdoor spaces.</p>
+</footer>
+
+<script>
+const T = {
+  en: {
+    nav_brand:'CABALLERO LAWN SERVICES CHARLOTTE',
+    nav_home:'Home', nav_services:'Services', nav_why:'About', nav_area:'Area Served', nav_cta:'Free Quote',
+    svc_1:'Lawn Care', svc_2:'Mulch Service', svc_3:'Fertilization', svc_4:'Spring / Fall Clean Up',
+    svc_5:'Tree Removal', svc_6:'Snow Removal', svc_7:'Seeding / Aerating', svc_8:'Pavers & Patios', svc_9:'Other Services',
+    hero_line1:"Charlotte's Trusted", hero_line2:'Outdoor', hero_line3:'Experts.',
+    hero_sub:'Mulch, Maintenance, Patios and Full Landscape projects — with fast quotes, clean work and reliable results.',
+    form_title:'Get a Free Estimate',
+    f_name:'Full Name', f_phone:'Phone *', f_email:'Gmail *', f_service:'Select a Service',
+    f_name_ph:'Your full name', f_phone_ph:'+1 (555) 000-0000', f_email_ph:'your@email.com',
+    f_submit:'Send Request',
+    svc_opts:['— Select a service —','Lawn Care','Mulch Service','Fertilization','Spring / Fall Clean Up','Tree Removal','Snow Removal','Seeding / Aerating','Pavers & Patios','Other Services'],
+    suc_title:"We'll be in touch soon!",
+    wel_pre:'Welcome to', wel_title:'Caballero Lawn Services',
+    wel_body:'Since 2016, Caballero Lawn Services has provided dependable landscaping services in Charlotte, NC and surrounding communities, from seasonal maintenance and mulch installation to patios and full landscape projects, delivering consistent results for residential and commercial properties.',
+    sl1_line1:'Build on Trust', sl1_line2:'Quality',
+    proj_label:'Our Work', proj_title:'Our Projects', proj_sub:'From retaining walls and custom patios to full landscape transformations.',
+    why_title:'Why Choose Caballero Lawn Service?',
+    why_body:'At Caballero Lawn Services, we are committed to delivering high-quality landscaping and outdoor solutions with professionalism, reliability, and attention to detail. Since 2016, we have helped homeowners and businesses transform their outdoor spaces.',
+    why_sub:'Full Renovation & Lawn Care', why_cta1:'Free Estimate', why_cta2:'Get Quote Here',
+    sl3_title:'Full Renovation & Lawn Care', sl3_sub:'Professional results for residential and commercial properties across the Charlotte area.',
+    faq_label:'FAQ', faq_title:'Frequently Asked Questions',
+    faq1_q:'How often should mulch be replaced?', faq1_a:'Most mulch should be refreshed once per year to maintain appearance and effectiveness. In high-traffic or weather-exposed areas, topping off mulch more frequently can help retain moisture and prevent weed growth.',
+    faq2_q:'Do I need a retaining wall for my yard?', faq2_a:'If your yard has slopes, drainage issues, or erosion concerns, a retaining wall can help stabilize the area and improve usability. It can also enhance the overall look of your landscape while preventing long-term damage.',
+    faq3_q:'How quickly can I get a landscaping quote?', faq3_a:'In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 428-4284 to get started.',
+    vis_line1:'Bring Your Vision to', vis_line2:'Life With Custom',
+    vis_body:'At Caballero Lawn Services, we specialize in patios, walkways, driveways, and retaining walls that combine beauty, durability, and craftsmanship.',
+    vis_cta:'Get a Free Quote',
+    rev_label:'Reviews', rev_title:'Customer Testimonials',
+    rs_maintenance:'Lawn Maintenance', rs_mulch:'Mulch Installation', rs_patio:'Patio & Pavers',
+    rs_snow:'Snow Removal', rs_tree:'Tree Removal', rs_seed:'Seeding & Aerating',
+    rs_shrub:'Shrub Planting', rs_landscape:'Full Landscape',
+    con_title:'Contact Us', con_cta:'📞 Call For a Free Estimate',
+    con_phone_lbl:'Phone', con_email_lbl:'Email', con_addr_lbl:'Address',
+    con_hours_lbl:'Hours', con_hours_val:'Mon–Sat: 7am – 6pm', con_emergency:'24/7 Emergencies',
+    ft_copy:'© 2026 Caballero Lawn Service – All Rights Reserved. Professional landscaping solutions designed to enhance the beauty and value of your outdoor spaces.',
+  },
+  es: {
+    nav_brand:'CABALLERO LAWN SERVICES CHARLOTTE',
+    nav_home:'Inicio', nav_services:'Servicios', nav_why:'Nosotros', nav_area:'Área de Servicio', nav_cta:'Cotización Gratis',
+    svc_1:'Cuidado de Césped', svc_2:'Servicio de Mantillo', svc_3:'Fertilización', svc_4:'Limpieza Primavera / Otoño',
+    svc_5:'Remoción de Árboles', svc_6:'Remoción de Nieve', svc_7:'Siembra / Aireación', svc_8:'Adoquines y Patios', svc_9:'Otros Servicios',
+    hero_line1:'Los Expertos de', hero_line2:'Confianza', hero_line3:'en Charlotte.',
+    hero_sub:'Mantillo, Mantenimiento, Patios y Proyectos Completos de Paisajismo — con cotizaciones rápidas, trabajo limpio y resultados confiables.',
+    form_title:'Obtén una Estimación Gratuita',
+    f_name:'Nombre Completo', f_phone:'Teléfono *', f_email:'Correo Electrónico *', f_service:'Selecciona un Servicio',
+    f_name_ph:'Tu nombre completo', f_phone_ph:'+1 (555) 000-0000', f_email_ph:'tu@correo.com',
+    f_submit:'Enviar Solicitud',
+    svc_opts:['— Selecciona un servicio —','Cuidado de Césped','Servicio de Mantillo','Fertilización','Limpieza Primavera / Otoño','Remoción de Árboles','Remoción de Nieve','Siembra / Aireación','Adoquines y Patios','Otros Servicios'],
+    suc_title:'¡Nos pondremos en contacto pronto!',
+    wel_pre:'Bienvenidos a', wel_title:'Caballero Lawn Services',
+    wel_body:'Desde 2016, Caballero Lawn Services ha brindado servicios confiables de paisajismo en Charlotte, NC y comunidades cercanas, desde mantenimiento estacional e instalación de mantillo hasta patios y proyectos completos de paisajismo.',
+    sl1_line1:'Construido en Confianza', sl1_line2:'y Calidad',
+    proj_label:'Nuestro Trabajo', proj_title:'Nuestros Proyectos', proj_sub:'Desde muros de contención y patios personalizados hasta transformaciones completas.',
+    why_title:'¿Por Qué Elegir Caballero Lawn Service?',
+    why_body:'En Caballero Lawn Services, estamos comprometidos a brindar soluciones de paisajismo de alta calidad con profesionalismo, confiabilidad y atención al detalle. Desde 2016, hemos ayudado a propietarios y empresas a transformar sus espacios exteriores.',
+    why_sub:'Renovación Completa y Cuidado de Césped', why_cta1:'Estimado Gratis', why_cta2:'Pedir Cotización',
+    sl3_title:'Renovación Completa y Cuidado de Césped', sl3_sub:'Resultados profesionales para propiedades residenciales y comerciales en toda el área de Charlotte.',
+    faq_label:'Preguntas Frecuentes', faq_title:'Preguntas Frecuentes',
+    faq1_q:'¿Con qué frecuencia se debe reemplazar el mantillo?', faq1_a:'La mayoría del mantillo debe renovarse una vez al año para mantener su apariencia y efectividad. En áreas de mucho tráfico o expuestas a la intemperie, agregar mantillo con más frecuencia ayuda a retener la humedad y prevenir el crecimiento de malezas.',
+    faq2_q:'¿Necesito un muro de contención en mi jardín?', faq2_a:'Si tu jardín tiene pendientes, problemas de drenaje o erosión, un muro de contención puede estabilizar el área y mejorar su usabilidad. También puede mejorar el aspecto general de tu paisaje y prevenir daños a largo plazo.',
+    faq3_q:'¿Qué tan rápido puedo obtener una cotización de paisajismo?', faq3_a:'En la mayoría de los casos, brindamos cotizaciones en 24 horas dependiendo del alcance del proyecto. Proyectos más grandes pueden requerir una visita en el lugar. Llámanos al (980) 428-4284.',
+    vis_line1:'Convierte Tu Visión en', vis_line2:'Realidad con lo Mejor',
+    vis_body:'En Caballero Lawn Services, nos especializamos en patios, caminos, entradas y muros de contención que combinan belleza, durabilidad y artesanía.',
+    vis_cta:'Obtener Cotización Gratis',
+    rev_label:'Reseñas', rev_title:'Testimonios de Clientes',
+    rs_maintenance:'Mantenimiento de Césped', rs_mulch:'Instalación de Mantillo', rs_patio:'Patios y Adoquines',
+    rs_snow:'Remoción de Nieve', rs_tree:'Remoción de Árboles', rs_seed:'Siembra y Aireación',
+    rs_shrub:'Plantación de Arbustos', rs_landscape:'Paisajismo Completo',
+    con_title:'Contáctenos', con_cta:'📞 Llame para Estimado Gratis',
+    con_phone_lbl:'Teléfono', con_email_lbl:'Correo', con_addr_lbl:'Dirección',
+    con_hours_lbl:'Horario', con_hours_val:'Lun–Sáb: 7am – 6pm', con_emergency:'Emergencias 24/7',
+    ft_copy:'© 2026 Caballero Lawn Service – Todos los Derechos Reservados. Soluciones profesionales de paisajismo diseñadas para realzar la belleza y el valor de sus espacios exteriores.',
+  }
+};
+
+let lang = localStorage.getItem('cls_lang') || 'en';
+let dark = localStorage.getItem('cls_dark') !== null
+  ? localStorage.getItem('cls_dark') === '1'
+  : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T[lang][el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = T[lang][el.dataset.i18nPh];
+    if (v !== undefined) el.placeholder = v;
+  });
+  document.querySelectorAll('[data-i18n-btn]').forEach(el => {
+    const key = el.dataset.i18nBtn;
+    const v = T[lang][key];
+    if (v !== undefined) el.childNodes[0].textContent = v + ' ';
+  });
+  const sel = document.getElementById('svc-select');
+  if (sel) {
+    sel.innerHTML = '';
+    T[lang].svc_opts.forEach((opt, i) => {
+      const o = document.createElement('option');
+      o.value = i === 0 ? '' : opt;
+      o.textContent = opt;
+      sel.appendChild(o);
+    });
+  }
+  document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
+  document.documentElement.lang = lang;
+}
+
+function applyDark() {
+  document.body.classList.toggle('dark', dark);
+  document.getElementById('mode-btn').textContent = dark ? '☀️' : '🌙';
+}
+
+document.getElementById('lang-btn').addEventListener('click', () => {
+  lang = lang === 'en' ? 'es' : 'en';
+  localStorage.setItem('cls_lang', lang);
+  applyLang();
+});
+document.getElementById('mode-btn').addEventListener('click', () => {
+  dark = !dark;
+  localStorage.setItem('cls_dark', dark ? '1' : '0');
+  applyDark();
+});
+
+// Hamburger
+document.getElementById('nav-hamburger').addEventListener('click', () => {
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+document.querySelectorAll('#mobile-nav a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('mobile-nav').classList.remove('open');
+}));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Sliders
+function slide(id, dir) {
+  const el = document.getElementById(id);
+  const w = el.querySelector('.slider-slide').offsetWidth + 8;
+  el.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
+}
+
+// Form
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('hero-form').style.display = 'none';
+  document.getElementById('hero-success').style.display = 'block';
+}
+
+applyLang();
+applyDark();
+</script>
+</body>
+</html>
