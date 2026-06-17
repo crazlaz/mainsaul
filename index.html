@@ -117,15 +117,29 @@
 
     /* ── IMAGE SLIDER ── */
     .slider-section { padding: 0; overflow: hidden; }
-    .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .5rem; padding: .5rem; scrollbar-width: none; }
+    .slider-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .5rem; padding: .5rem; scrollbar-width: none; background: #463C16; }
     .slider-track::-webkit-scrollbar { display: none; }
-    .slider-slide { flex: 0 0 calc(33.333% - .35rem); scroll-snap-align: start; border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; position: relative; }
+    .slider-slide { flex: 0 0 calc(33.333% - .35rem); scroll-snap-align: start; border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; position: relative; background: #6B5C2E; cursor: pointer; box-shadow: 0 0 14px 3px rgba(80,70,15,.45), inset 0 0 0 2px rgba(100,85,25,.25); }
+    .slider-slide::after { content: ''; position: absolute; inset: 0; border-radius: 8px; background: radial-gradient(ellipse at center, transparent 45%, rgba(30,60,10,.5) 100%); pointer-events: none; z-index: 1; transition: opacity .3s; }
+    .slider-slide:hover::after { opacity: .6; }
     .slider-slide img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-    .slider-slide:hover img { transform: scale(1.04); }
+    .slider-slide:hover img { transform: scale(1.06); }
     .slider-slide.wide { flex: 0 0 calc(50% - .25rem); }
-    .slider-controls { display: flex; justify-content: center; gap: .5rem; padding: .75rem 0 1rem; }
+    .slider-controls { display: flex; justify-content: center; gap: .5rem; padding: .75rem 0 1rem; background: #463C16; }
     .s-btn { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--green); background: transparent; color: var(--green); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
     .s-btn:hover { background: var(--green); color: #fff; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.92); align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 10px; box-shadow: 0 0 60px rgba(200,100,20,.4), 0 8px 40px rgba(0,0,0,.7); object-fit: contain; }
+    .lb-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2.8rem; cursor: pointer; line-height: 1; opacity: .8; transition: opacity .2s; }
+    .lb-close:hover { opacity: 1; }
+    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.25); color: #fff; font-size: 2rem; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+    .lb-arrow:hover { background: rgba(212,130,10,.6); }
+    .lb-prev { left: 1.25rem; }
+    .lb-next { right: 1.25rem; }
+    .lb-counter { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.6); font-size: .85rem; }
 
     /* ── OUR PROJECTS ── */
     .projects { padding: 5rem 0; background: var(--surf2); transition: background .3s; }
@@ -256,6 +270,80 @@
       .contact-details { flex-direction: column; gap: 1rem; }
       .top-bar { flex-direction: column; text-align: center; }
     }
+
+    /* ══ ANIMATIONS ══ */
+
+    /* Hero entrance — staggered fade-up on load */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .hero-logo            { animation: fadeUp .7s ease both .1s; }
+    .hero-text .stars     { animation: fadeUp .65s ease both .35s; }
+    .hero-text h1         { animation: fadeUp .7s ease both .55s; }
+    .hero-text > p        { animation: fadeUp .65s ease both .75s; }
+    .hero-form            { animation: fadeUp .7s ease both .5s; }
+
+    /* Scroll reveal base states */
+    .rv   { opacity: 0; transform: translateY(38px); transition: opacity .75s ease, transform .75s ease; }
+    .rv-l { opacity: 0; transform: translateX(-46px); transition: opacity .75s ease, transform .75s ease; }
+    .rv-r { opacity: 0; transform: translateX(46px);  transition: opacity .75s ease, transform .75s ease; }
+    .rv.on, .rv-l.on, .rv-r.on { opacity: 1; transform: none; }
+
+    /* Floating call button */
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);    opacity: .6; }
+      100% { transform: scale(1.85); opacity: 0;  }
+    }
+    .float-call {
+      position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 600;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--green); color: #fff; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 22px rgba(46,125,50,.5);
+      text-decoration: none; transition: transform .2s, background .2s;
+    }
+    .float-call:hover { transform: scale(1.1); background: var(--green-dark); }
+    .float-call::before {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      background: var(--green); animation: pulse-ring 2.4s ease-out infinite;
+    }
+
+    /* Section-dark shimmer */
+    @keyframes shimmer {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .section-dark {
+      background: linear-gradient(90deg,
+        var(--green-dark) 0%, var(--green) 35%,
+        #43A047 50%, var(--green) 65%, var(--green-dark) 100%);
+      background-size: 250% auto;
+      animation: shimmer 7s linear infinite;
+    }
+    body.dark .section-dark {
+      background: linear-gradient(90deg, #0A180A 0%, #1B5E20 40%, #2E7D32 50%, #1B5E20 60%, #0A180A 100%);
+      background-size: 250% auto;
+      animation: shimmer 7s linear infinite;
+    }
+
+    /* Ripple */
+    @keyframes ripple-out { to { transform: scale(6); opacity: 0; } }
+    .ripple-btn { position: relative; overflow: hidden; }
+    .ripple-dot {
+      position: absolute; border-radius: 50%;
+      width: 10px; height: 10px; pointer-events: none;
+      background: rgba(255,255,255,.38);
+      animation: ripple-out .7s linear forwards;
+    }
+
+    /* Nav shrink on scroll */
+    nav.scrolled .nav-inner { height: 52px; }
+
+    /* Card lift on hover */
+    .contact-form-card { transition: transform .3s ease, box-shadow .3s ease; }
+    .contact-form-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,.11); }
+
   </style>
 </head>
 <body>
@@ -793,6 +881,88 @@ function handleContactSubmit(e) {
 
 applyLang();
 applyDark();
+
+// ── SCROLL REVEAL ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+
+[
+  ['.welcome-text, .why-text, .contact-info-panel', 'rv-l'],
+  ['.welcome-img, .why-img, .contact-form-card',    'rv-r'],
+  ['.faq-item, .review-card, .section-header, .vision-content, .ci-item', 'rv'],
+].forEach(([sel, cls]) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add(cls);
+    el.style.transitionDelay = (i * 0.09) + 's';
+    revealObs.observe(el);
+  });
+});
+
+// ── RIPPLE on CTA buttons ──
+document.querySelectorAll('.nav-cta-btn, .cf-submit, .submit-btn, .btn-solid').forEach(btn => {
+  btn.classList.add('ripple-btn');
+  btn.addEventListener('click', e => {
+    const d = document.createElement('span');
+    const r = btn.getBoundingClientRect();
+    d.className = 'ripple-dot';
+    d.style.left = (e.clientX - r.left - 5) + 'px';
+    d.style.top  = (e.clientY - r.top  - 5) + 'px';
+    btn.appendChild(d);
+    setTimeout(() => d.remove(), 750);
+  });
+});
+
+// ── NAV SHRINK on scroll ──
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+// ── LIGHTBOX ──
+let lbImgs = [], lbIdx = 0;
+
+function openLB(src) {
+  lbImgs = [...document.querySelectorAll('.slider-slide img')].map(i => i.src);
+  lbIdx = lbImgs.findIndex(s => s === src);
+  if (lbIdx < 0) lbIdx = 0;
+  document.getElementById('lb-img').src = lbImgs[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImgs.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir, e) {
+  e.stopPropagation();
+  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
+  document.getElementById('lb-img').src = lbImgs[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImgs.length;
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') lbNav(-1, { stopPropagation: () => {} });
+  if (e.key === 'ArrowRight') lbNav(1, { stopPropagation: () => {} });
+});
+
+document.querySelectorAll('.slider-slide img').forEach(img => {
+  img.addEventListener('click', () => openLB(img.src));
+});
 </script>
+
+<a href="tel:+19803189206" class="float-call" aria-label="Call us now">📞</a>
+
+<div id="lightbox" class="lightbox" onclick="closeLB()">
+  <button class="lb-close" onclick="closeLB()">&#x2715;</button>
+  <button class="lb-arrow lb-prev" onclick="lbNav(-1, event)">&#8249;</button>
+  <img id="lb-img" src="" alt="Project photo">
+  <button class="lb-arrow lb-next" onclick="lbNav(1, event)">&#8250;</button>
+  <span id="lb-counter" class="lb-counter"></span>
+</div>
+
 </body>
 </html>
