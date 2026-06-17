@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Professional Landscaping & Lawn Care Services, Pavers in Charlotte, NC</title>
-  <meta name="description" content="Professional landscaping, lawn maintenance, mulch, patios and pavers in Charlotte, NC. Free estimates. Call (980) 428-4284.">
+  <meta name="description" content="Professional landscaping, lawn maintenance, mulch, patios and pavers in Charlotte, NC. Free estimates. Call (980) 318-9206.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -47,9 +47,8 @@
     /* ── NAV ── */
     nav { position: sticky; top: 0; z-index: 200; background: var(--surf); border-bottom: 2px solid var(--green); box-shadow: 0 2px 12px rgba(0,0,0,.12); transition: background .3s; }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-    .nav-logo { font-size: 1.1rem; font-weight: 900; color: var(--green); letter-spacing: -.02em; line-height: 1.1; }
-    body.dark .nav-logo { color: var(--accent); }
-    .nav-logo small { display: block; font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--fg2); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 52px; width: auto; display: block; }
     .nav-menu { display: flex; align-items: center; gap: .25rem; list-style: none; }
     .nav-menu > li { position: relative; }
     .nav-menu > li > a, .nav-menu > li > button { padding: .5rem .85rem; font-size: .85rem; font-weight: 600; color: var(--fg); background: none; border: none; cursor: pointer; border-radius: 4px; display: flex; align-items: center; gap: .3rem; font-family: inherit; transition: background .15s, color .15s; white-space: nowrap; }
@@ -71,6 +70,7 @@
     .mobile-nav a, .mobile-nav button { font-size: .9rem; font-weight: 600; color: var(--fg); background: none; border: none; cursor: pointer; text-align: left; padding: .35rem 0; font-family: inherit; }
 
     /* ── HERO ── */
+    .hero-logo { height: 90px; width: auto; margin-bottom: 1.2rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
@@ -262,7 +262,7 @@
 
 <!-- ── TOP BAR ── -->
 <div class="top-bar">
-  <span class="top-bar-phone">📞 <a href="tel:+19804284284">(980) 428-4284</a></span>
+  <span class="top-bar-phone">📞 Sales: <a href="tel:+19803189206">(980) 318-9206</a> &nbsp;|&nbsp; Immediate Help: <a href="tel:+17042818325">(704) 281-8325</a></span>
   <span class="top-bar-brand" data-i18n="nav_brand">CABALLERO LAWN SERVICES CHARLOTTE</span>
 </div>
 
@@ -270,8 +270,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#home" class="nav-logo">
-      Caballero Lawn Services
-      <small>Charlotte, NC</small>
+      <img src="images/logo.png" alt="Esau Cruz Landscaping & Tree Services">
     </a>
     <ul class="nav-menu" id="nav-menu">
       <li><a href="#home" data-i18n="nav_home">Home</a></li>
@@ -325,6 +324,7 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
+        <img src="images/logo.png" alt="Esau Cruz Landscaping & Tree Services" class="hero-logo">
         <span class="stars">★ ★ ★ ★ ★</span>
         <h1>
           <span data-i18n="hero_line1">Charlotte's Trusted</span>
@@ -467,7 +467,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq3_q">How quickly can I get a landscaping quote?</span><span class="faq-icon">+</span></button>
-        <div class="faq-a"><p data-i18n="faq3_a">In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 428-4284 to get started.</p></div>
+        <div class="faq-a"><p data-i18n="faq3_a">In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 318-9206 to get started.</p></div>
       </div>
     </div>
   </div>
@@ -522,7 +522,7 @@
             <div class="ci-icon">📞</div>
             <div class="ci-item-text">
               <strong data-i18n="con_phone_lbl">Phone</strong>
-              <a href="tel:+19804284284">+1 (980) 428-4284</a>
+              <a href="tel:+19803189206">+1 (980) 318-9206</a>
             </div>
           </div>
           <div class="ci-item">
@@ -550,7 +550,7 @@
             <div class="ci-icon">🚨</div>
             <div class="ci-item-text">
               <strong data-i18n="con_emergency">24/7 Emergencies</strong>
-              <a href="tel:+19804284284">+1 (980) 428-4284</a>
+              <a href="tel:+17042818325">+1 (704) 281-8325</a>
             </div>
           </div>
         </div>
@@ -636,7 +636,7 @@ const T = {
     faq_label:'FAQ', faq_title:'Frequently Asked Questions',
     faq1_q:'How often should mulch be replaced?', faq1_a:'Most mulch should be refreshed once per year to maintain appearance and effectiveness. In high-traffic or weather-exposed areas, topping off mulch more frequently can help retain moisture and prevent weed growth.',
     faq2_q:'Do I need a retaining wall for my yard?', faq2_a:'If your yard has slopes, drainage issues, or erosion concerns, a retaining wall can help stabilize the area and improve usability. It can also enhance the overall look of your landscape while preventing long-term damage.',
-    faq3_q:'How quickly can I get a landscaping quote?', faq3_a:'In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 428-4284 to get started.',
+    faq3_q:'How quickly can I get a landscaping quote?', faq3_a:'In most cases, we provide fast turnaround on quotes, often within 24 hours depending on the project scope. Larger or more complex projects may require an on-site visit. Call us at (980) 318-9206 to get started.',
     vis_line1:'Bring Your Vision to', vis_line2:'Life With Custom',
     vis_body:'At Caballero Lawn Services, we specialize in patios, walkways, driveways, and retaining walls that combine beauty, durability, and craftsmanship.',
     vis_cta:'Get a Free Quote',
@@ -681,7 +681,7 @@ const T = {
     faq_label:'Preguntas Frecuentes', faq_title:'Preguntas Frecuentes',
     faq1_q:'¿Con qué frecuencia se debe reemplazar el mantillo?', faq1_a:'La mayoría del mantillo debe renovarse una vez al año para mantener su apariencia y efectividad. En áreas de mucho tráfico o expuestas a la intemperie, agregar mantillo con más frecuencia ayuda a retener la humedad y prevenir el crecimiento de malezas.',
     faq2_q:'¿Necesito un muro de contención en mi jardín?', faq2_a:'Si tu jardín tiene pendientes, problemas de drenaje o erosión, un muro de contención puede estabilizar el área y mejorar su usabilidad. También puede mejorar el aspecto general de tu paisaje y prevenir daños a largo plazo.',
-    faq3_q:'¿Qué tan rápido puedo obtener una cotización de paisajismo?', faq3_a:'En la mayoría de los casos, brindamos cotizaciones en 24 horas dependiendo del alcance del proyecto. Proyectos más grandes pueden requerir una visita en el lugar. Llámanos al (980) 428-4284.',
+    faq3_q:'¿Qué tan rápido puedo obtener una cotización de paisajismo?', faq3_a:'En la mayoría de los casos, brindamos cotizaciones en 24 horas dependiendo del alcance del proyecto. Proyectos más grandes pueden requerir una visita en el lugar. Llámanos al (980) 318-9206.',
     vis_line1:'Convierte Tu Visión en', vis_line2:'Realidad con lo Mejor',
     vis_body:'En Caballero Lawn Services, nos especializamos en patios, caminos, entradas y muros de contención que combinan belleza, durabilidad y artesanía.',
     vis_cta:'Obtener Cotización Gratis',
