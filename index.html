@@ -424,9 +424,9 @@
       <div class="hero-form">
         <h2 data-i18n="form_title">Get a Free Estimate</h2>
         <form id="hero-form" onsubmit="handleSubmit(event)" novalidate>
-          <div class="fld"><label data-i18n="f_name">Full Name</label><input type="text" data-i18n-ph="f_name_ph"></div>
-          <div class="fld"><label data-i18n="f_phone">Phone *</label><input type="tel" required data-i18n-ph="f_phone_ph"></div>
-          <div class="fld"><label data-i18n="f_email">Gmail *</label><input type="email" data-i18n-ph="f_email_ph"></div>
+          <div class="fld"><label data-i18n="f_name">Full Name</label><input id="hero-name" type="text" data-i18n-ph="f_name_ph"></div>
+          <div class="fld"><label data-i18n="f_phone">Phone *</label><input id="hero-phone" type="tel" required data-i18n-ph="f_phone_ph"></div>
+          <div class="fld"><label data-i18n="f_email">Gmail *</label><input id="hero-email" type="email" data-i18n-ph="f_email_ph"></div>
           <div class="fld"><label data-i18n="f_service">Select a Service</label><select id="svc-select"></select></div>
           <button type="submit" class="submit-btn" data-i18n="f_submit">Enviar</button>
         </form>
@@ -868,8 +868,26 @@ function slide(id, dir) {
 }
 
 // Forms
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
+  const btn = document.querySelector('#hero-form .submit-btn');
+  const lang = localStorage.getItem('cls_lang') || 'en';
+  btn.disabled = true;
+  btn.textContent = lang === 'es' ? 'Enviando…' : 'Sending…';
+
+  try {
+    await fetch(CRM_URL + '/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:    document.getElementById('hero-name').value.trim(),
+        phone:   document.getElementById('hero-phone').value.trim(),
+        email:   document.getElementById('hero-email').value.trim(),
+        service: document.getElementById('svc-select').value,
+      })
+    });
+  } catch (_) {}
+
   document.getElementById('hero-form').style.display = 'none';
   document.getElementById('hero-success').style.display = 'block';
 }
