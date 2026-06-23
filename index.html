@@ -868,25 +868,19 @@ function slide(id, dir) {
 }
 
 // Forms
-async function handleSubmit(e) {
+function handleSubmit(e) {
   e.preventDefault();
-  const btn = document.querySelector('#hero-form .submit-btn');
-  const lang = localStorage.getItem('cls_lang') || 'en';
-  btn.disabled = true;
-  btn.textContent = lang === 'es' ? 'Enviando…' : 'Sending…';
 
-  try {
-    await fetch(CRM_URL + '/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name:    document.getElementById('hero-name').value.trim(),
-        phone:   document.getElementById('hero-phone').value.trim(),
-        email:   document.getElementById('hero-email').value.trim(),
-        service: document.getElementById('svc-select').value,
-      })
-    });
-  } catch (_) {}
+  fetch(CRM_URL + '/api/leads', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:    document.getElementById('hero-name').value.trim(),
+      phone:   document.getElementById('hero-phone').value.trim(),
+      email:   document.getElementById('hero-email').value.trim(),
+      service: document.getElementById('svc-select').value,
+    })
+  }).catch(() => {});
 
   document.getElementById('hero-form').style.display = 'none';
   document.getElementById('hero-success').style.display = 'block';
